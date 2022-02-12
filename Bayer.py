@@ -1,17 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 from PIL import Image
 import os
 from utils import read_image
-
-
-# In[2]:
-
 
 def reflect_image(image, offset):
     x, y = image.shape
@@ -49,10 +39,6 @@ def mask(shape):
     blue[0::2, 0::2] = 1
     return red, green, blue
 
-
-# In[3]:
-
-
 left_right = [(0, -1), (0, 1)]
 up_down = [(1, 0), (-1, 0)]
 near_neighbors = left_right + up_down
@@ -69,9 +55,6 @@ divisor = 8
 alpha = 1
 beta = 1
 gamma = 1
-
-
-# In[4]:
 
 
 def get_addition(offset_array, image, x, y, weight=1.0):
@@ -98,10 +81,6 @@ def fill_br_g(image, x, y, up):
     already = get_addition(left_right_2_offset if up else up_down_2_offset, image, x, y, 0.5)
     already += 5*image[x][y]
     return (curr + beta*(already + grad))/(divisor)
-
-
-# In[5]:
-
 
 def bayer_to_rgb(file):
     offset = 2
@@ -130,20 +109,12 @@ def bayer_to_rgb(file):
                 
     return np.rint(R).astype('uint8'), np.rint(G).astype('uint8'), np.rint(B).astype('uint8')
 
-
-# In[6]:
-
-
 def mse(Original, New, total):
     return np.sum(np.power(Original-New, 2))/total
 
 def psnr(Original, New, total):
     m = mse(Original, New, total)
     return 10*np.log10((255*255)/m)
-
-
-# In[7]:
-
 
 def process_bayer(folder):
     
@@ -167,33 +138,6 @@ def process_bayer(folder):
     return image
 
 
-# In[8]:
-
-
 folder = './data/demosaicing/4'
 process_bayer(folder)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 

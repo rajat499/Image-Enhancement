@@ -1,0 +1,20 @@
+Demosiaking
+File: Bayer.py
+Change the folder path on line 141
+The folder should contain `bayer.jpg` and `color.png`
+and run `python3 Bayer.py`
+The script saves the output in same folder with the name `transformed.png`
+
+Image Enhancement
+File: Image_Enhancement.py
+Change night images folder path on line 52 and fog images folder path on line 63
+The folders should be numbered as 1,2,3, and so on. Also, chane the loop range accordingly.
+The subfolders should contain `night_mode_off.jpg`
+The output will be saved in same path as `equalized_rgb_transformed.png` and `equalized_hsv_transformed.png`
+Run the script as `python3 Image_Enhancement.py`
+
+Video Enhancement
+File: Video.py
+Change the input and output file path on line 18-20
+and run `python3 Video.py`
+The script saves the output file at specified path
